@@ -10,10 +10,12 @@ export const handlers = [
       }
     })
   }),
-  http.get('/categories/:id/products', ({ params }) => {
-    const { id } = params
-    const category = testArray.find((category) => category.id === Number(id))
-    const products = category?.products || 'В данный момент товаров нет'
+  http.get('/categories/:id/products', () => {
+    const products = [
+      { id: 1, productName: 'Товар 1' },
+      { id: 2, productName: 'Товар 2' },
+      { id: 3, productName: 'Товар 3' }
+    ]
     return new Response(JSON.stringify(products), {
       headers: {
         'Content-Type': 'application/json'
