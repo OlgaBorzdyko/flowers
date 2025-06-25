@@ -7,6 +7,9 @@ import App from './App'
 
 const rootElement = document.getElementById('root') as HTMLElement
 const root = ReactDOM.createRoot(rootElement)
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const mocks = async () => {
   if (import.meta.env.DEV) {
@@ -18,8 +21,10 @@ const mocks = async () => {
 }
 mocks().then(() => {
   root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </QueryClientProvider>
   )
 })

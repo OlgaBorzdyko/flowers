@@ -1,11 +1,12 @@
-import { useEffect } from 'react'
+import { useCategories } from './mocks/hooks/useCategories'
 
 const Test = () => {
-  useEffect(() => {
-    fetch('/categories')
-      .then((res) => res.json())
-      .then(console.log)
-  }, [])
-  return <div style={{ color: 'black' }}>Дефолтная сборка</div>
+  const { data } = useCategories()
+  console.log(data)
+  return (
+    <div>
+      <button></button>
+    </div>
+  )
 }
 export default Test
