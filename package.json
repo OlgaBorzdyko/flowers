@@ -32,8 +32,11 @@
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.5.0",
+    "init": "^0.1.2",
     "moment": "^2.29.4",
+    "msw": "^2.10.2",
     "perfect-scrollbar": "^1.5.5",
+    "public": "^0.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
@@ -43,6 +46,7 @@
     "react-scripts": "^5.0.1",
     "react-table": "^7.8.0",
     "styled-components": "^6.0.7",
+    "vitest": "^3.2.4",
     "yaml": "^2.7.0",
     "yup": "^1.2.0"
   },
@@ -72,5 +76,10 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
