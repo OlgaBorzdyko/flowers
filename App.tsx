@@ -1,4 +1,4 @@
-import Test from './src/test'
+import Test from './src/Main'
 
 const App = () => {
   return (
