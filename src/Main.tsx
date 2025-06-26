@@ -30,12 +30,12 @@ const Main = () => {
       <CategoriesWrapper>
         {categories.map((category: Category) => (
           <div key={category.id}>
-            <Card
+            <CategoryCard
               key={category.id}
               onClick={() => setSelectedCategoryId(category.id)}
             >
               {category.categoryName}
-            </Card>
+            </CategoryCard>
           </div>
         ))}
       </CategoriesWrapper>
@@ -74,7 +74,7 @@ const CategoriesWrapper = styled.div`
   flex-wrap: wrap;
 `
 
-const Card = styled.button`
+const CategoryCard = styled.button`
   flex: 1 1 calc(33.333% - 16px);
   min-width: 200px;
   max-width: 100%;
