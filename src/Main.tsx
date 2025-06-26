@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react'
 import { useCategories } from './mocks/hooks/useCategories'
 import { useProducts } from './mocks/hooks/useProducts'
 import PaginationComponent from './PaginationComponent'
-import { Category } from './types/Category'
-import { Product } from './types/Product'
+import { Category, Product } from './types/ApiDataTypes'
 
 const Main = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1)
@@ -17,12 +16,6 @@ const Main = () => {
       refetch()
     }
   }, [selectedCategoryId, refetch])
-
-  useEffect(() => {
-    if (products) {
-      console.log('Товары:', products)
-    }
-  }, [products])
   if (isLoading || !products || !products.products) {
     return <div>Загрузка...</div>
   }
