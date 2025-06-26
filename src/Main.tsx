@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useCategories } from './mocks/hooks/useCategories'
 import { useProducts } from './mocks/hooks/useProducts'
+import BasicPagination from './PaginatedItems'
 import { Category } from './types/Category'
 
 const Main = () => {
@@ -34,6 +35,7 @@ const Main = () => {
           </button>
         </div>
       ))}
+      <BasicPagination />
     </div>
   )
 }
