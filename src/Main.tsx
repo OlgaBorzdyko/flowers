@@ -4,13 +4,16 @@ import { useCategories } from './mocks/hooks/useCategories'
 import { useProducts } from './mocks/hooks/useProducts'
 import PaginationComponent from './PaginationComponent'
 import { Category } from './types/Category'
+import { Product } from './types/Product'
 
 const Main = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1)
+  const [page, setPage] = useState<number>(1)
   const { data: categories, isLoading } = useCategories()
   const { data: products, refetch } = useProducts(selectedCategoryId)
   useEffect(() => {
     if (selectedCategoryId !== null) {
+      setPage(1)
       refetch()
     }
   }, [selectedCategoryId, refetch])
@@ -20,8 +23,13 @@ const Main = () => {
       console.log('Товары:', products)
     }
   }, [products])
+  if (isLoading || !products || !products.products) {
+    return <div>Загрузка...</div>
+  }
 
-  if (isLoading) return <div>Загрузка...</div>
+  const start = (page - 1) * products?.limit
+  const end = start + products?.limit
+  const currentProducts = products.products.slice(start, end)
 
   return (
     <div>
@@ -35,8 +43,18 @@ const Main = () => {
           </button>
         </div>
       ))}
+      <section>
+        {currentProducts.map((product: Product) => (
+          <div key={product.id}>{product.productName}</div>
+        ))}
+      </section>
       {products?.totalCount && (
-        <PaginationComponent count={products.totalCount} />
+        <PaginationComponent
+          count={products?.totalCount}
+          limit={products?.limit}
+          onChange={(newPage: number) => setPage(newPage)}
+          page={page}
+        />
       )}
     </div>
   )
