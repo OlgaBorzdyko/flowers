@@ -1,9 +1,9 @@
-import Test from './src/Main'
+import Main from './src/Main'
 
 const App = () => {
   return (
     <div>
-      <Test />
+      <Main />
     </div>
   )
 }
