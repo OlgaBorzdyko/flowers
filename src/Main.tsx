@@ -30,12 +30,12 @@ const Main = () => {
       <CategoriesWrapper>
         {categories.map((category: Category) => (
           <div key={category.id}>
-            <button
+            <Card
               key={category.id}
               onClick={() => setSelectedCategoryId(category.id)}
             >
               {category.categoryName}
-            </button>
+            </Card>
           </div>
         ))}
       </CategoriesWrapper>
@@ -63,9 +63,20 @@ const MainWrapper = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
+  width: 100%;
 `
 
 const CategoriesWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+`
+
+const Card = styled.button`
+  flex: 1 1 calc(33.333% - 16px);
+  min-width: 200px;
+  max-width: 100%;
+  min-height: 200px;
+  max-height: 100%;
 `
