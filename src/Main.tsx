@@ -64,13 +64,14 @@ const MainWrapper = styled.div`
   justify-content: flex-start;
   gap: 1rem;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 `
 
 const CategoriesWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1rem;
 `
 
 const Card = styled.button`
@@ -79,4 +80,5 @@ const Card = styled.button`
   max-width: 100%;
   min-height: 200px;
   max-height: 100%;
+  margin: 1em;
 `
