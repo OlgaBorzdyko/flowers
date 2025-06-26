@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
 import { useCategories } from './mocks/hooks/useCategories'
 import { useProducts } from './mocks/hooks/useProducts'
@@ -25,17 +26,19 @@ const Main = () => {
   const currentProducts = products.products.slice(start, end)
 
   return (
-    <div>
-      {categories.map((category: Category) => (
-        <div key={category.id}>
-          <button
-            key={category.id}
-            onClick={() => setSelectedCategoryId(category.id)}
-          >
-            {category.categoryName}
-          </button>
-        </div>
-      ))}
+    <MainWrapper>
+      <CategoriesWrapper>
+        {categories.map((category: Category) => (
+          <div key={category.id}>
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategoryId(category.id)}
+            >
+              {category.categoryName}
+            </button>
+          </div>
+        ))}
+      </CategoriesWrapper>
       <section>
         {currentProducts.map((product: Product) => (
           <div key={product.id}>{product.productName}</div>
@@ -49,7 +52,20 @@ const Main = () => {
           page={page}
         />
       )}
-    </div>
+    </MainWrapper>
   )
 }
 export default Main
+
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+`
+
+const CategoriesWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`
