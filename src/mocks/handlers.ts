@@ -13,7 +13,7 @@ export const handlers = [
   http.get('/categories/:id/products', () => {
     const products = {
       totalCount: 30,
-      limit: 1,
+      limit: 6,
       products: [
         { id: 1, productName: 'Товар 1' },
         { id: 2, productName: 'Товар 2' },
