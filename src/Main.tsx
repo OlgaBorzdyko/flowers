@@ -39,11 +39,11 @@ const Main = () => {
           </div>
         ))}
       </CategoriesWrapper>
-      <section>
+      <ProductsGrid>
         {currentProducts.map((product: Product) => (
           <ProductCard key={product.id}>{product.productName}</ProductCard>
         ))}
-      </section>
+      </ProductsGrid>
       {products?.totalCount && (
         <PaginationComponent
           count={products?.totalCount}
@@ -66,27 +66,41 @@ const MainWrapper = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  border: 2px dashed blue;
 `
 
 const CategoriesWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border: 2px dashed blue;
+  width: 100%;
+  justify-content: space-between;
 `
 
-const CategoryCard = styled.button`
+const CategoryCard = styled.div`
   flex: 1 1 calc(33.333% - 16px);
   min-width: 200px;
   max-width: 100%;
   min-height: 200px;
   max-height: 100%;
   margin: 1em;
+  border: 1px solid gray;
 `
-const ProductCard = styled.button`
-  flex: 1 1 calc(33.333% - 16px);
+
+const ProductsGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  border: 2px dashed blue;
+`
+const ProductCard = styled.div`
+  flex: 0 1 calc(33.333% - 1rem);
+  box-sizing: border-box;
   min-width: 200px;
-  max-width: 100%;
-  min-height: 200px;
-  max-height: 100%;
-  margin: 1em;
+  min-height: 400px;
+  border: 1px solid gray;
 `
