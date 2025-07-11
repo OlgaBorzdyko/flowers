@@ -92,15 +92,17 @@ const ProductsGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
-  width: 100%;
+  width: calc(100% - 20px);
   border: 2px dashed blue;
+  padding-left: 15px;
+  padding-right: 5px;
 `
 const ProductCard = styled.div`
-  flex: 0 1 calc(33.333% - 1rem);
+  flex: 0 1 calc(25% - 10px);
   box-sizing: border-box;
-  min-width: 200px;
+  min-width: 180px;
   min-height: 400px;
   border: 1px solid gray;
 `
