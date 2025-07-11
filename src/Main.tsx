@@ -66,14 +66,12 @@ const MainWrapper = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  border: 2px dashed blue;
 `
 
 const CategoriesWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 2px dashed blue;
   width: 100%;
   justify-content: space-between;
 `
@@ -95,7 +93,6 @@ const ProductsGrid = styled.div`
   justify-content: flex-start;
   gap: 10px;
   width: calc(100% - 20px);
-  border: 2px dashed blue;
   padding-left: 15px;
   padding-right: 5px;
 `
