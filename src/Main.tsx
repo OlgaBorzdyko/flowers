@@ -41,7 +41,7 @@ const Main = () => {
       </CategoriesWrapper>
       <section>
         {currentProducts.map((product: Product) => (
-          <div key={product.id}>{product.productName}</div>
+          <ProductCard key={product.id}>{product.productName}</ProductCard>
         ))}
       </section>
       {products?.totalCount && (
@@ -75,6 +75,14 @@ const CategoriesWrapper = styled.div`
 `
 
 const CategoryCard = styled.button`
+  flex: 1 1 calc(33.333% - 16px);
+  min-width: 200px;
+  max-width: 100%;
+  min-height: 200px;
+  max-height: 100%;
+  margin: 1em;
+`
+const ProductCard = styled.button`
   flex: 1 1 calc(33.333% - 16px);
   min-width: 200px;
   max-width: 100%;
