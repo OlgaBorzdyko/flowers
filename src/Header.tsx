@@ -34,8 +34,8 @@ const TitleWrapper = styled.div`
   margin: 0;
 `
 const Title = styled.h1`
-    font-size: 4rem;
-    color: rgba(147, 113, 142, 0.5);
+  font-size: 4rem;
+  color: rgba(147, 113, 142, 0.5);
 `
 
 const Contacts = styled.div`
