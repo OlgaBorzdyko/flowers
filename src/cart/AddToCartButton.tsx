@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from '@mui/material'
 
-const AddToCartButton = () => {
+const AddToCartButton = ({ onClick }: { onClick: () => void }) => {
   return (
     <Box>
-      <Button>
+      <Button onClick={onClick}>
         <Typography>Добавить в корзину</Typography>
       </Button>
     </Box>

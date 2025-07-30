@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import AddToCartButton from './cart/AddToCartButton'
+import { useCart } from './cart/useCart'
 import { useCategories } from './mocks/hooks/useCategories'
 import { useProducts } from './mocks/hooks/useProducts'
 import PaginationComponent from './PaginationComponent'
@@ -12,6 +13,7 @@ const Main = () => {
   const [page, setPage] = useState<number>(1)
   const { data: categories, isLoading } = useCategories()
   const { data: products, refetch } = useProducts(selectedCategoryId)
+  const { addItem } = useCart()
   useEffect(() => {
     if (selectedCategoryId !== null) {
       setPage(1)
@@ -44,7 +46,11 @@ const Main = () => {
         {currentProducts.map((product: Product) => (
           <ProductCard key={product.id}>
             {product.productName}
-            <AddToCartButton />
+            <AddToCartButton
+              onClick={() =>
+                addItem({ id: product.id, name: product.productName })
+              }
+            />
           </ProductCard>
         ))}
       </ProductsGrid>
