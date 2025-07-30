@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import AddToCartButton from "./cart/AddToCartButton";
 
+import AddToCartButton from './cart/AddToCartButton'
 import { useCategories } from './mocks/hooks/useCategories'
 import { useProducts } from './mocks/hooks/useProducts'
 import PaginationComponent from './PaginationComponent'
@@ -42,7 +42,8 @@ const Main = () => {
       </CategoriesWrapper>
       <ProductsGrid>
         {currentProducts.map((product: Product) => (
-          <ProductCard key={product.id}>{product.productName}
+          <ProductCard key={product.id}>
+            {product.productName}
             <AddToCartButton />
           </ProductCard>
         ))}
