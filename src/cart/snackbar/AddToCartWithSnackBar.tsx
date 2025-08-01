@@ -1,10 +1,21 @@
+import { Box, Typography } from '@mui/material'
 import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar'
+import { useCart } from 'cart/useCart'
 import * as React from 'react'
+import { useState } from 'react'
 
 import AddToCartButton from '../AddToCartButton'
 
-const AddToCartWithSnackBar = ({ onClick }: { onClick: () => void }) => {
-  const [open, setOpen] = React.useState(false)
+const AddToCartWithSnackBar = ({
+  onClick,
+  productId
+}: {
+  onClick: () => void
+  productId: number
+}) => {
+  const [open, setOpen] = useState(false)
+  const { items } = useCart()
+  const name = items.find((item) => item.id === productId)?.name
 
   const handleClick = () => {
     setOpen(true)
@@ -25,12 +36,12 @@ const AddToCartWithSnackBar = ({ onClick }: { onClick: () => void }) => {
   return (
     <div>
       <AddToCartButton onClick={handleClick} />
-      <Snackbar
-        autoHideDuration={5000}
-        message="Товар добавлен в корзину"
-        onClose={handleClose}
-        open={open}
-      />
+      <Snackbar autoHideDuration={5000} onClose={handleClose} open={open}>
+        <Box>
+          <Typography>Товар добавлен в корзину</Typography>
+          <Typography>{name}</Typography>
+        </Box>
+      </Snackbar>
     </div>
   )
 }

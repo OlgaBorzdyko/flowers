@@ -51,6 +51,7 @@ const Main = () => {
               onClick={() =>
                 addItem({ id: product.id, name: product.productName })
               }
+              productId={product.id}
             />
             <RemoveItemButton
               onClick={() =>

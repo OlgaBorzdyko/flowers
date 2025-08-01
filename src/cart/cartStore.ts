@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 interface CartItem {
-  id: string
+  id: number
   name: string
   price: number
   quantity: number
