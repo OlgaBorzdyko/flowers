@@ -6,7 +6,7 @@ const CartPage = () => {
   const { items, addItem, decrementItem } = useCart()
   return (
     <Box>
-      <Typography>Корзина</Typography>
+      <Typography>{items.length > 0 ? 'Корзина' : 'Корзина пуста'}</Typography>
       <Box>
         {items.map((item, index) => (
           <Table key={index}>
