@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import AddToCartButton from './cart/AddToCartButton'
 import RemoveItemButton from './cart/RemoveItemButton'
+import AddToCartWithSnackBar from './cart/snackbar/AddToCartWithSnackBar'
 import { useCart } from './cart/useCart'
 import { useCategories } from './mocks/hooks/useCategories'
 import { useProducts } from './mocks/hooks/useProducts'
@@ -47,7 +47,7 @@ const Main = () => {
         {currentProducts.map((product: Product) => (
           <ProductCard key={product.id}>
             {product.productName}
-            <AddToCartButton
+            <AddToCartWithSnackBar
               onClick={() =>
                 addItem({ id: product.id, name: product.productName })
               }
