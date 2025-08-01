@@ -26,7 +26,6 @@ export const useCartStore = create<CartState>((set) => ({
         const updatedItems = state.items.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         )
-        console.log(updatedItems)
         Cookies.set(CART_COOKIE_KEY, JSON.stringify(updatedItems), {
           expires: 7
         })
@@ -46,18 +45,19 @@ export const useCartStore = create<CartState>((set) => ({
       if (!selectedItem) return state
 
       const newQuantity = selectedItem.quantity - 1
+      let updatedItems
+
       if (newQuantity <= 0) {
-        return {
-          items: state.items.filter((i) => i.id !== item.id)
-        }
+        updatedItems = state.items.filter((i) => i.id !== item.id)
+      } else {
+        updatedItems = state.items.map((i) =>
+          i.id === item.id ? { ...i, quantity: newQuantity } : i
+        )
       }
-      const updatedItems = state.items.map((i) =>
-        i.id === item.id ? { ...i, quantity: newQuantity } : i
-      )
       Cookies.set(CART_COOKIE_KEY, JSON.stringify(updatedItems), {
         expires: 7
       })
-      console.log(updatedItems)
+
       return {
         items: updatedItems
       }
