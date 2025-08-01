@@ -4,6 +4,7 @@ import { useCart } from './useCart'
 
 const CartPage = () => {
   const { items, addItem, decrementItem } = useCart()
+    console.log('items', items)
   return (
     <Box>
       <Typography>{items.length > 0 ? 'Корзина' : 'Корзина пуста'}</Typography>

@@ -34,6 +34,9 @@ export const useCartStore = create<CartState>((set) => ({
         }
       }
       const newItems = [...state.items, { ...item, quantity: 1 }]
+      Cookies.set(CART_COOKIE_KEY, JSON.stringify(newItems), {
+        expires: 7
+      })
       return {
         items: newItems
       }
