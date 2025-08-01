@@ -33,6 +33,7 @@
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.5.0",
     "init": "^0.1.2",
+    "js-cookie": "^3.0.5",
     "moment": "^2.29.4",
     "msw": "^2.10.2",
     "perfect-scrollbar": "^1.5.5",
