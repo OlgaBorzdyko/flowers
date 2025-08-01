@@ -10,7 +10,6 @@ interface CartItem {
 interface CartState {
   items: CartItem[]
   addItem: (item: CartItem) => void
-  // removeItem: (item: CartItem) => void
   decrementItem: (item: CartItem) => void
 }
 
