@@ -1,8 +1,9 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar'
 import { useCart } from 'cart/useCart'
 import * as React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import AddToCartButton from '../AddToCartButton'
 
@@ -40,6 +41,9 @@ const AddToCartWithSnackBar = ({
         <Box>
           <Typography>Товар добавлен в корзину</Typography>
           <Typography>{name}</Typography>
+          <Button component={Link} to="/cart">
+            Перейти в корзину
+          </Button>
         </Box>
       </Snackbar>
     </div>
