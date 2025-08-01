@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Header = () => {
   return (
     <HeaderWrapper>
       <TitleWrapper>
-        <Title>Flowers</Title>
+        <Title to="/">Flowers</Title>
       </TitleWrapper>
       <Contacts>
         <h4 style={{ marginBottom: '5px' }}>Tbilisi</h4>
@@ -33,7 +34,7 @@ const TitleWrapper = styled.div`
   transform: translateX(-50%);
   margin: 0;
 `
-const Title = styled.h1`
+const Title = styled(Link)`
   font-size: 4rem;
   color: rgba(147, 113, 142, 0.5);
 `
