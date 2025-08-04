@@ -35,7 +35,7 @@ const AddToCartWithSnackBar = ({
   }
 
   return (
-    <div>
+    <Box width="100%">
       <AddToCartButton onClick={handleClick} />
       <Snackbar autoHideDuration={5000} onClose={handleClose} open={open}>
         <Box>
@@ -46,7 +46,7 @@ const AddToCartWithSnackBar = ({
           </Button>
         </Box>
       </Snackbar>
-    </div>
+    </Box>
   )
 }
 

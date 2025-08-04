@@ -51,7 +51,7 @@ const MainPage = () => {
             </Box>
           </Grid>
         ))}
-        <Box>
+        <Grid>
           <Grid
             alignItems="center"
             border="1px solid black"
@@ -98,7 +98,7 @@ const MainPage = () => {
               )
             })}
           </Grid>
-        </Box>
+        </Grid>
         {products?.totalCount && (
           <PaginationComponent
             count={products?.totalCount}

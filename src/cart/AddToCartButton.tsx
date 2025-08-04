@@ -2,11 +2,12 @@ import { Box, Button, Typography } from '@mui/material'
 
 const AddToCartButton = ({ onClick }: { onClick: () => void }) => {
   return (
-    <Box>
+    <Box width="100%">
       <Button
         color="primary"
+        fullWidth
         onClick={onClick}
-        sx={{ width: '100%', height: 'auto', minHeight: '50px' }}
+        sx={{ height: 'auto', minHeight: '50px', width: '100%' }}
         variant="contained"
       >
         <Typography>Добавить в корзину</Typography>
