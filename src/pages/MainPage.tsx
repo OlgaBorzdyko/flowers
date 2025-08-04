@@ -54,7 +54,6 @@ const MainPage = () => {
             alignItems="center"
             border="1px solid black"
             container
-            justifyContent="space-between"
             spacing={2}
           >
             {currentProducts.map((product: Product) => {
@@ -62,7 +61,12 @@ const MainPage = () => {
                 items.find((i) => i.id === product.id)?.quantity || 0
               return (
                 <Grid item key={product.id} md={3} xs={12}>
-                  <Box border="1px solid #ccc" padding={2}>
+                  <Box
+                    border="1px solid #ccc"
+                    display="flex"
+                    height="auto"
+                    padding={2}
+                  >
                     {product.productName}
                     <AddToCartWithSnackBar
                       onClick={() =>
