@@ -1,11 +1,12 @@
+import { ThemeProvider } from '@mui/material'
 import { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import styled from 'styled-components'
 
-import AppRoutes from './routes'
 import { useCart } from './cart/useCart'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import AppRoutes from './routes'
+import theme from './theme'
 
 const App = () => {
   const { cookiesLoading } = useCart()
@@ -14,20 +15,13 @@ const App = () => {
     cookiesLoading()
   }, [cookiesLoading])
   return (
-    <BrowserRouter>
-      <Wrapper>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
         <Header />
         <AppRoutes />
         <Footer />
-      </Wrapper>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 export default App
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-`

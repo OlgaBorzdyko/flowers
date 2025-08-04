@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import QuantityChanging from '../cart/QuantityChanging'
 import AddToCartWithSnackBar from '../cart/snackbar/AddToCartWithSnackBar'
 import { useCart } from '../cart/useCart'
+import PaginationComponent from '../components/PaginationComponent'
 import { useCategories } from '../mocks/hooks/useCategories'
 import { useProducts } from '../mocks/hooks/useProducts'
-import PaginationComponent from '../components/PaginationComponent'
 import { Category, Product } from '../types/ApiDataTypes'
 
 const MainPage = () => {
