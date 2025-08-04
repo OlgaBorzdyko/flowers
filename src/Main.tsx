@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import RemoveItemButton from './cart/RemoveItemButton'
+import QuantityChanging from './cart/QuantityChanging'
 import AddToCartWithSnackBar from './cart/snackbar/AddToCartWithSnackBar'
 import { useCart } from './cart/useCart'
 import { useCategories } from './mocks/hooks/useCategories'
@@ -14,7 +14,7 @@ const Main = () => {
   const [page, setPage] = useState<number>(1)
   const { data: categories, isLoading } = useCategories()
   const { data: products, refetch } = useProducts(selectedCategoryId)
-  const { addItem, decrementItem } = useCart()
+  const { addItem, items } = useCart()
   useEffect(() => {
     if (selectedCategoryId !== null) {
       setPage(1)
@@ -44,22 +44,22 @@ const Main = () => {
         ))}
       </CategoriesWrapper>
       <ProductsGrid>
-        {currentProducts.map((product: Product) => (
-          <ProductCard key={product.id}>
-            {product.productName}
-            <AddToCartWithSnackBar
-              onClick={() =>
-                addItem({ id: product.id, name: product.productName })
-              }
-              productId={product.id}
-            />
-            <RemoveItemButton
-              onClick={() =>
-                decrementItem({ id: product.id, name: product.productName })
-              }
-            />
-          </ProductCard>
-        ))}
+        {currentProducts.map((product: Product) => {
+          const quantityInCart =
+            items.find((i) => i.id === product.id)?.quantity || 0
+          return (
+            <ProductCard key={product.id}>
+              {product.productName}
+              <AddToCartWithSnackBar
+                onClick={() =>
+                  addItem({ id: product.id, name: product.productName })
+                }
+                productId={product.id}
+              />
+              <QuantityChanging item={product} itemQuantity={quantityInCart} />
+            </ProductCard>
+          )
+        })}
       </ProductsGrid>
       {products?.totalCount && (
         <PaginationComponent
