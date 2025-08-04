@@ -1,10 +1,11 @@
-import { Box, Button, Table, Typography } from '@mui/material'
+import { Box, Table, Typography } from '@mui/material'
 
+import QuantityChanging from './QuantityChanging'
 import { useCart } from './useCart'
 
 const CartPage = () => {
-  const { items, addItem, decrementItem } = useCart()
-    console.log('items', items)
+  const { items } = useCart()
+  console.log('items', items)
   return (
     <Box>
       <Typography>{items.length > 0 ? 'Корзина' : 'Корзина пуста'}</Typography>
@@ -13,21 +14,7 @@ const CartPage = () => {
           <Table key={index}>
             <Typography>{item.name}</Typography>
             <Box>
-              <Button
-                onClick={() => {
-                  decrementItem(item)
-                }}
-              >
-                -
-              </Button>
-              {item.quantity}
-              <Button
-                onClick={() => {
-                  addItem(item)
-                }}
-              >
-                +
-              </Button>
+              <QuantityChanging item={item} itemQuantity={item.quantity} />
             </Box>
           </Table>
         ))}
