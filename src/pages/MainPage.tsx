@@ -64,9 +64,11 @@ const MainPage = () => {
               return (
                 <Grid item key={product.id} md={3} xs={6}>
                   <Box
+                    alignItems="center"
                     border="1px solid #ccc"
                     display="flex"
                     flexDirection="column"
+                    gap={2}
                     height="auto"
                     padding={2}
                   >
@@ -79,8 +81,8 @@ const MainPage = () => {
                         objectFit: 'cover'
                       }}
                     />
-                    <Typography>{product.productName}</Typography>
-                    <Typography>{product.price}</Typography>
+                    <Typography variant="h1">{product.productName}</Typography>
+                    <Typography variant="h2">{product.price}</Typography>
                     <AddToCartWithSnackBar
                       onClick={() =>
                         addItem({ id: product.id, name: product.productName })

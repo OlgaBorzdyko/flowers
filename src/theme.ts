@@ -28,6 +28,11 @@ const theme = createTheme({
       fontSize: '20px',
       fontWeight: 400,
       lineHeight: '24px'
+    },
+    h2: {
+      fontSize: '24px',
+      fontWeight: 600,
+      lineHeight: '24px'
     }
   },
 
