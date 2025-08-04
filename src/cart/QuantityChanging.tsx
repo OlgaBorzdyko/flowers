@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button, Typography, useTheme } from '@mui/material'
 
 import { useCart } from './useCart'
 
@@ -9,21 +9,34 @@ const QuantityChanging = ({
   item
   itemQuantity: number
 }) => {
+  const theme = useTheme()
   const { decrementItem, addItem } = useCart()
   return (
-    <Box>
+    <Box
+      bgcolor={theme.palette.primary.main}
+      borderRadius={2}
+      color={theme.palette.text.secondary}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}
+    >
       <Button
         onClick={() => {
           decrementItem(item)
         }}
+        variant="quantity"
       >
         -
       </Button>
-      {itemQuantity}
+      <Typography variant="h1">{itemQuantity}</Typography>
       <Button
         onClick={() => {
           addItem(item)
         }}
+        variant="quantity"
       >
         +
       </Button>

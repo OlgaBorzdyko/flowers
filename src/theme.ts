@@ -53,6 +53,20 @@ const theme = createTheme({
           boxSizing: 'border-box'
         })
       }
+    },
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: 'quantity' },
+          style: {
+            color: '#999999',
+            textTransform: 'none',
+            fontSize: '24px',
+            fontWeight: 400,
+            lineHeight: '24px'
+          }
+        }
+      ]
     }
   }
 })
