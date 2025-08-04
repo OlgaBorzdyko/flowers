@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import QuantityChanging from '../cart/QuantityChanging'
@@ -30,45 +30,65 @@ const MainPage = () => {
   const currentProducts = products.products.slice(start, end)
 
   return (
-    <Box>
-      <Box>
+    <Box m={10}>
+      <Grid
+        alignItems="center"
+        border="1px solid black"
+        container
+        justifyContent="space-between"
+        spacing={2}
+      >
         {categories.map((category: Category) => (
-          <div key={category.id}>
+          <Grid item key={category.id} md={3} xs={12}>
             <Box
-              key={category.id}
+              border="1px solid #ccc"
               onClick={() => setSelectedCategoryId(category.id)}
+              padding={2}
             >
               {category.categoryName}
             </Box>
-          </div>
+          </Grid>
         ))}
-      </Box>
-      <Box>
-        {currentProducts.map((product: Product) => {
-          const quantityInCart =
-            items.find((i) => i.id === product.id)?.quantity || 0
-          return (
-            <Box key={product.id}>
-              {product.productName}
-              <AddToCartWithSnackBar
-                onClick={() =>
-                  addItem({ id: product.id, name: product.productName })
-                }
-                productId={product.id}
-              />
-              <QuantityChanging item={product} itemQuantity={quantityInCart} />
-            </Box>
-          )
-        })}
-      </Box>
-      {products?.totalCount && (
-        <PaginationComponent
-          count={products?.totalCount}
-          limit={products?.limit}
-          onChange={(newPage: number) => setPage(newPage)}
-          page={page}
-        />
-      )}
+        <Box>
+          <Grid
+            alignItems="center"
+            border="1px solid black"
+            container
+            justifyContent="space-between"
+            spacing={2}
+          >
+            {currentProducts.map((product: Product) => {
+              const quantityInCart =
+                items.find((i) => i.id === product.id)?.quantity || 0
+              return (
+                <Grid item key={product.id} md={3} xs={12}>
+                  <Box border="1px solid #ccc" padding={2}>
+                    {product.productName}
+                    <AddToCartWithSnackBar
+                      onClick={() =>
+                        addItem({ id: product.id, name: product.productName })
+                      }
+                      productId={product.id}
+                    />
+                    <QuantityChanging
+                      item={product}
+                      itemQuantity={quantityInCart}
+                    />
+                  </Box>
+                </Grid>
+              )
+            })}
+          </Grid>
+        </Box>
+        {products?.totalCount && (
+          <PaginationComponent
+            count={products?.totalCount}
+            limit={products?.limit}
+            onChange={(newPage: number) => setPage(newPage)}
+            page={page}
+          />
+        )}
+      </Grid>
     </Box>
   )
 }
