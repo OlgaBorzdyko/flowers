@@ -37,13 +37,15 @@ const theme = createTheme({
         disableGutters: true
       },
       styleOverrides: {
-        root: {
+        root: ({ theme }) => ({
+          paddingLeft: theme.spacing(0),
+          paddingRight: theme.spacing(0),
           display: 'flex',
           flexDirection: 'column',
           height: '100vh',
           width: '100%',
           boxSizing: 'border-box'
-        }
+        })
       }
     }
   }

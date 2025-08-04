@@ -1,5 +1,5 @@
+import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 import QuantityChanging from '../cart/QuantityChanging'
 import AddToCartWithSnackBar from '../cart/snackbar/AddToCartWithSnackBar'
@@ -30,25 +30,25 @@ const MainPage = () => {
   const currentProducts = products.products.slice(start, end)
 
   return (
-    <MainWrapper>
-      <CategoriesWrapper>
+    <Box>
+      <Box>
         {categories.map((category: Category) => (
           <div key={category.id}>
-            <CategoryCard
+            <Box
               key={category.id}
               onClick={() => setSelectedCategoryId(category.id)}
             >
               {category.categoryName}
-            </CategoryCard>
+            </Box>
           </div>
         ))}
-      </CategoriesWrapper>
-      <ProductsGrid>
+      </Box>
+      <Box>
         {currentProducts.map((product: Product) => {
           const quantityInCart =
             items.find((i) => i.id === product.id)?.quantity || 0
           return (
-            <ProductCard key={product.id}>
+            <Box key={product.id}>
               {product.productName}
               <AddToCartWithSnackBar
                 onClick={() =>
@@ -57,10 +57,10 @@ const MainPage = () => {
                 productId={product.id}
               />
               <QuantityChanging item={product} itemQuantity={quantityInCart} />
-            </ProductCard>
+            </Box>
           )
         })}
-      </ProductsGrid>
+      </Box>
       {products?.totalCount && (
         <PaginationComponent
           count={products?.totalCount}
@@ -69,54 +69,7 @@ const MainPage = () => {
           page={page}
         />
       )}
-    </MainWrapper>
+    </Box>
   )
 }
 export default MainPage
-
-const MainWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-`
-
-const CategoriesWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-between;
-`
-
-const CategoryCard = styled.div`
-  flex: 1 1 calc(33.333% - 16px);
-  min-width: 200px;
-  max-width: 100%;
-  min-height: 200px;
-  max-height: 100%;
-  margin: 1em;
-  border: 1px solid gray;
-`
-
-const ProductsGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 10px;
-  width: calc(100% - 20px);
-  padding-left: 15px;
-  padding-right: 5px;
-`
-const ProductCard = styled.div`
-  flex: 0 1 calc(25% - 10px);
-  box-sizing: border-box;
-  min-width: 180px;
-  min-height: 400px;
-  border: 1px solid gray;
-`

@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@mui/material'
+import { Container, CssBaseline, ThemeProvider } from '@mui/material'
 import { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -16,10 +16,13 @@ const App = () => {
   }, [cookiesLoading])
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <BrowserRouter>
-        <Header />
-        <AppRoutes />
-        <Footer />
+        <Container>
+          <Header />
+          <AppRoutes />
+          <Footer />
+        </Container>
       </BrowserRouter>
     </ThemeProvider>
   )
