@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material'
+import {Box, Grid, Typography} from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import QuantityChanging from '../cart/QuantityChanging'
@@ -78,7 +78,8 @@ const MainPage = () => {
                         objectFit: 'cover'
                       }}
                     />
-                    {product.productName}
+                    <Typography>{product.productName}</Typography>
+                    <Typography>{product.price}</Typography>
                     <AddToCartWithSnackBar
                       onClick={() =>
                         addItem({ id: product.id, name: product.productName })
