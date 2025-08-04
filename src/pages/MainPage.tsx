@@ -61,7 +61,7 @@ const MainPage = () => {
               const quantityInCart =
                 items.find((i) => i.id === product.id)?.quantity || 0
               return (
-                <Grid item key={product.id} md={3} xs={12}>
+                <Grid item key={product.id} md={3} xs={6}>
                   <Box
                     border="1px solid #ccc"
                     display="flex"
