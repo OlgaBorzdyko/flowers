@@ -1,7 +1,7 @@
-import {Box, Grid, Typography} from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import QuantityChanging from '../cart/QuantityChanging'
+// import QuantityChanging from '../cart/QuantityChanging'
 import AddToCartWithSnackBar from '../cart/snackbar/AddToCartWithSnackBar'
 import { useCart } from '../cart/useCart'
 import PaginationComponent from '../components/PaginationComponent'
@@ -14,7 +14,8 @@ const MainPage = () => {
   const [page, setPage] = useState<number>(1)
   const { data: categories, isLoading } = useCategories()
   const { data: products, refetch } = useProducts(selectedCategoryId)
-  const { addItem, items } = useCart()
+  const { addItem } = useCart()
+  //items
   console.log(products)
   useEffect(() => {
     if (selectedCategoryId !== null) {
@@ -58,8 +59,8 @@ const MainPage = () => {
             spacing={2}
           >
             {currentProducts.map((product: Product) => {
-              const quantityInCart =
-                items.find((i) => i.id === product.id)?.quantity || 0
+              // const quantityInCart =
+              //   items.find((i) => i.id === product.id)?.quantity || 0
               return (
                 <Grid item key={product.id} md={3} xs={6}>
                   <Box
@@ -86,10 +87,10 @@ const MainPage = () => {
                       }
                       productId={product.id}
                     />
-                    <QuantityChanging
-                      item={product}
-                      itemQuantity={quantityInCart}
-                    />
+                    {/*<QuantityChanging*/}
+                    {/*  item={product}*/}
+                    {/*  itemQuantity={quantityInCart}*/}
+                    {/*/>*/}
                   </Box>
                 </Grid>
               )
