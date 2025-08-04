@@ -15,6 +15,7 @@ const MainPage = () => {
   const { data: categories, isLoading } = useCategories()
   const { data: products, refetch } = useProducts(selectedCategoryId)
   const { addItem, items } = useCart()
+  console.log(products)
   useEffect(() => {
     if (selectedCategoryId !== null) {
       setPage(1)
@@ -67,6 +68,7 @@ const MainPage = () => {
                     height="auto"
                     padding={2}
                   >
+                    <img alt={product.productName} src={product.img} />
                     {product.productName}
                     <AddToCartWithSnackBar
                       onClick={() =>
