@@ -65,10 +65,19 @@ const MainPage = () => {
                   <Box
                     border="1px solid #ccc"
                     display="flex"
+                    flexDirection="column"
                     height="auto"
                     padding={2}
                   >
-                    <img alt={product.productName} src={product.img} />
+                    <img
+                      alt={product.productName}
+                      src={product.img}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'cover'
+                      }}
+                    />
                     {product.productName}
                     <AddToCartWithSnackBar
                       onClick={() =>
