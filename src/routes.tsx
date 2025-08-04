@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom'
 
-import CartPage from './src/cart/CartPage'
-import Main from './src/Main'
+import CartPage from './pages/CartPage'
+import MainPage from './pages/MainPage'
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route element={<Main />} path="/" />
+      <Route element={<MainPage />} path="/" />
       <Route element={<CartPage />} path="/cart" />
     </Routes>
   )

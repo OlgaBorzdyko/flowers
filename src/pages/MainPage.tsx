@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import QuantityChanging from './cart/QuantityChanging'
-import AddToCartWithSnackBar from './cart/snackbar/AddToCartWithSnackBar'
-import { useCart } from './cart/useCart'
-import { useCategories } from './mocks/hooks/useCategories'
-import { useProducts } from './mocks/hooks/useProducts'
-import PaginationComponent from './PaginationComponent'
-import { Category, Product } from './types/ApiDataTypes'
+import QuantityChanging from '../cart/QuantityChanging'
+import AddToCartWithSnackBar from '../cart/snackbar/AddToCartWithSnackBar'
+import { useCart } from '../cart/useCart'
+import { useCategories } from '../mocks/hooks/useCategories'
+import { useProducts } from '../mocks/hooks/useProducts'
+import PaginationComponent from '../components/PaginationComponent'
+import { Category, Product } from '../types/ApiDataTypes'
 
-const Main = () => {
+const MainPage = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
   const { data: categories, isLoading } = useCategories()
@@ -72,7 +72,7 @@ const Main = () => {
     </MainWrapper>
   )
 }
-export default Main
+export default MainPage
 
 const MainWrapper = styled.div`
   display: flex;

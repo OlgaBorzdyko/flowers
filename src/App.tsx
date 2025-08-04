@@ -3,9 +3,9 @@ import { BrowserRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 import AppRoutes from './routes'
-import { useCart } from './src/cart/useCart'
-import Footer from './src/Footer'
-import Header from './src/Header'
+import { useCart } from './cart/useCart'
+import Footer from './components/Footer'
+import Header from './components/Header'
 
 const App = () => {
   const { cookiesLoading } = useCart()

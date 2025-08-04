@@ -1,10 +1,10 @@
 import { http } from 'msw'
 
-import { testArray } from '../testArray'
+import { staticProductsDataArray } from './staticProductsDataArray'
 
 export const handlers = [
   http.get('/categories', () => {
-    return new Response(JSON.stringify(testArray), {
+    return new Response(JSON.stringify(staticProductsDataArray), {
       headers: {
         'Content-Type': 'application/json'
       }

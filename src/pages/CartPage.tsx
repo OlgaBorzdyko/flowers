@@ -1,7 +1,7 @@
 import { Box, Table, Typography } from '@mui/material'
 
-import QuantityChanging from './QuantityChanging'
-import { useCart } from './useCart'
+import QuantityChanging from '../cart/QuantityChanging'
+import { useCart } from '../cart/useCart'
 
 const CartPage = () => {
   const { items } = useCart()

@@ -1,5 +1,3 @@
-import './global.css'
-
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
@@ -13,7 +11,7 @@ const queryClient = new QueryClient()
 
 const mocks = async () => {
   if (import.meta.env.DEV) {
-    const { browser } = await import('./src/mocks/browser')
+    const { browser } = await import('./mocks/browser')
     await browser.start({
       onUnhandledRequest: 'bypass'
     })

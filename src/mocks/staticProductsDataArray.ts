@@ -1,4 +1,4 @@
-export const testArray = [
+export const staticProductsDataArray = [
   {
     id: 1,
     categoryName: 'Букеты',
