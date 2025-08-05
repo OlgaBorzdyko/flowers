@@ -15,6 +15,7 @@ const MainPage = () => {
   const { data: categories, isLoading } = useCategories()
   const { data: products } = useProducts()
   const { addItem, items, setAllProducts } = useCart()
+  const limit = 6
 
   useEffect(() => {
     if (products?.products) {
@@ -31,8 +32,8 @@ const MainPage = () => {
     (product) => product.categoryId === selectedCategoryId
   )
 
-  const start = (page - 1) * products?.limit
-  const end = start + products?.limit
+  const start = (page - 1) * limit
+  const end = start + limit
   const currentProducts = filteredProducts.slice(start, end)
 
   return (
@@ -90,7 +91,6 @@ const MainPage = () => {
                     height="auto"
                     padding={2}
                   >
-                    {/* Обёртка над изображением и кнопкой */}
                     <Box
                       sx={{
                         position: 'relative',
@@ -116,7 +116,6 @@ const MainPage = () => {
                         }}
                       />
 
-                      {/* Кнопка поверх */}
                       <Box
                         className="overlayButton"
                         sx={{
@@ -157,10 +156,10 @@ const MainPage = () => {
             })}
           </Grid>
         </Grid>
-        {products?.totalCount && (
+        {filteredProducts && (
           <PaginationComponent
-            count={products?.totalCount}
-            limit={products?.limit}
+            count={filteredProducts?.length}
+            limit={limit}
             onChange={(newPage: number) => setPage(newPage)}
             page={page}
           />
