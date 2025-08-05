@@ -1,30 +1,25 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import QuantityChanging from '../cart/QuantityChanging'
 import AddToCartWithSnackBar from '../cart/snackbar/AddToCartWithSnackBar'
 import { useCart } from '../cart/useCart'
-import PaginationComponent from '../components/PaginationComponent'
 import { useCategories } from '../mocks/hooks/useCategories'
 import { useProducts } from '../mocks/hooks/useProducts'
 import { Category, Product } from '../types/ApiDataTypes'
 
 const MainPage = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1)
-  const [page, setPage] = useState<number>(1)
+  const [count, setCount] = useState(8)
   const { data: categories, isLoading } = useCategories()
   const { data: products } = useProducts()
   const { addItem, items, setAllProducts } = useCart()
-  const limit = 6
 
   useEffect(() => {
     if (products?.products) {
       setAllProducts(products.products)
     }
   }, [products, setAllProducts])
-  useEffect(() => {
-    setPage(1)
-  }, [selectedCategoryId])
   if (isLoading || !products || !products.products) {
     return <div>Загрузка...</div>
   }
@@ -32,9 +27,7 @@ const MainPage = () => {
     (product) => product.categoryId === selectedCategoryId
   )
 
-  const start = (page - 1) * limit
-  const end = start + limit
-  const currentProducts = filteredProducts.slice(start, end)
+  const currentProducts = filteredProducts.slice(0, count)
 
   return (
     <Box m={10}>
@@ -156,13 +149,10 @@ const MainPage = () => {
             })}
           </Grid>
         </Grid>
-        {filteredProducts && (
-          <PaginationComponent
-            count={filteredProducts?.length}
-            limit={limit}
-            onChange={(newPage: number) => setPage(newPage)}
-            page={page}
-          />
+        {count < filteredProducts.length && (
+          <Button onClick={() => setCount((prev) => prev + 8)}>
+            Показать еще
+          </Button>
         )}
       </Grid>
     </Box>

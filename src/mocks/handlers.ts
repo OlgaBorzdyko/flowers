@@ -82,6 +82,69 @@ export const handlers = [
           img: '/bouquet.jpeg',
           price: 7600,
           categoryId: 5
+        },
+        {
+          id: 11,
+          productName: 'Букет 1',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 12,
+          productName: 'Букет 2',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 13,
+          productName: 'Букет 3',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 14,
+          productName: 'Букет 1',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 15,
+          productName: 'Букет 2',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 16,
+          productName: 'Букет 3',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 17,
+          productName: 'Букет 1',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 18,
+          productName: 'Букет 2',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
+        },
+        {
+          id: 19,
+          productName: 'Букет 3',
+          img: '/bouquet.jpeg',
+          price: 7600,
+          categoryId: 1
         }
       ]
     }
