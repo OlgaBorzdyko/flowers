@@ -3,15 +3,26 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <>
+    <Box
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-between"
+      mr={10}
+      ml={10}
+      p={2}
+    >
+      <Box width="10%" />
       <Box>
-        <Link to="/">Flowers</Link>
+        <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+          <Typography variant="h3">Flourish</Typography>
+        </Link>
       </Box>
       <Box>
-        <Typography>Tbilisi</Typography>
-        <Typography>+9955555555</Typography>
+        <Typography variant="h1">Tbilisi</Typography>
+        <Typography variant="h1">+9955555555</Typography>
       </Box>
-    </>
+    </Box>
   )
 }
 

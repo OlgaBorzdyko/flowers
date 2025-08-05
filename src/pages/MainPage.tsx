@@ -35,11 +35,11 @@ const MainPage = () => {
         alignItems="center"
         border="1px solid black"
         container
+        gap={6}
         justifyContent="center"
         spacing={2}
-        gap={6}
       >
-        <Grid container spacing={2} justifyContent="center">
+        <Grid container justifyContent="center" spacing={2}>
           {categories.map((category: Category) => (
             <Grid item key={category.id} md={2} xs={6}>
               <Box

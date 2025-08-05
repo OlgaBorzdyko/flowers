@@ -1,3 +1,5 @@
+import '@fontsource/montserrat/400.css'
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 

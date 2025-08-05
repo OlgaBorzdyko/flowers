@@ -33,6 +33,11 @@ const theme = createTheme({
       fontSize: '24px',
       fontWeight: 600,
       lineHeight: '24px'
+    },
+    h3: {
+      fontFamily: `'Montserrat', sans-serif`,
+      fontWeight: 400,
+      fontSize: '5rem'
     }
   },
 
