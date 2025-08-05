@@ -16,7 +16,7 @@ const AddToCartWithSnackBar = ({
 }) => {
   const [open, setOpen] = useState(false)
   const { items } = useCart()
-  const name = items.find((item) => item.id === productId)?.name
+  const name = items.find((item) => item.id === productId)?.productName
 
   const handleClick = () => {
     setOpen(true)

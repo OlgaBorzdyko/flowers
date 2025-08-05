@@ -3,7 +3,7 @@ import { create } from 'zustand'
 
 interface CartItem {
   id: number
-  name: string
+  productName: string
   price: number
   quantity: number
   img: string
