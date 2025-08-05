@@ -11,15 +11,19 @@ interface CartItem {
 
 interface CartState {
   items: CartItem[]
+  allProducts: CartItem[]
   addItem: (item: CartItem) => void
   decrementItem: (item: CartItem) => void
   cookiesLoading: () => void
+  setAllProducts: (items: CartItem[]) => void
 }
 
 const CART_COOKIE_KEY = 'cart_items'
 
 export const useCartStore = create<CartState>((set) => ({
   items: [],
+  allProducts: [],
+  setAllProducts: (items) => set({ allProducts: items }),
   addItem: (item) => {
     set((state) => {
       const addedItem = state.items.find((i) => i.id === item.id)

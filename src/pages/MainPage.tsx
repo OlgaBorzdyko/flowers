@@ -14,13 +14,19 @@ const MainPage = () => {
   const [page, setPage] = useState<number>(1)
   const { data: categories, isLoading } = useCategories()
   const { data: products, refetch } = useProducts(selectedCategoryId)
-  const { addItem, items } = useCart()
+  const { addItem, items, setAllProducts } = useCart()
   useEffect(() => {
     if (selectedCategoryId !== null) {
       setPage(1)
       refetch()
     }
   }, [selectedCategoryId, refetch])
+
+  useEffect(() => {
+    if (products?.products) {
+      setAllProducts(products.products)
+    }
+  }, [products, setAllProducts])
   if (isLoading || !products || !products.products) {
     return <div>Загрузка...</div>
   }

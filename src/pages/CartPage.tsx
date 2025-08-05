@@ -1,5 +1,6 @@
 import { Box, Card, Grid, Typography } from '@mui/material'
 
+import Offering from '../cart/Offering'
 import QuantityChanging from '../cart/QuantityChanging'
 import { useCart } from '../cart/useCart'
 
@@ -61,6 +62,7 @@ const CartPage = () => {
             </Card>
           </Grid>
         </Grid>
+        <Offering />
       </Box>
     </Box>
   )
