@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from '@mui/material'
 
+import { getNoun } from '../cart/cart-components/getNoun'
 import ItemsInCart from '../cart/cart-components/ItemsInCart'
 import Offering from '../cart/cart-components/Offering'
 import PlacingOrder from '../cart/cart-components/PlacingOrder'
@@ -7,11 +8,16 @@ import { useCart } from '../cart/useCart'
 
 const CartPage = () => {
   const { items } = useCart()
+  const quantity = items.reduce(
+    (accumulator, item) => accumulator + item.quantity,
+    0
+  )
+  const word = getNoun(quantity, 'товар', 'товара', 'товаров')
   return (
     <Box>
       <Typography>
         {items.length > 0
-          ? 'Корзина'
+          ? 'В корзине' + `${quantity} ${word}`
           : 'В корзине пусто\n' +
             '\n' +
             'Перейдите в каталог, чтобы выбрать товар и оформить заказ'}
