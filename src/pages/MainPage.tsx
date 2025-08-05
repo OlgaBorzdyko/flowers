@@ -13,27 +13,27 @@ const MainPage = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
   const { data: categories, isLoading } = useCategories()
-  const { data: products, refetch } = useProducts(selectedCategoryId)
+  const { data: products } = useProducts()
   const { addItem, items, setAllProducts } = useCart()
-  useEffect(() => {
-    if (selectedCategoryId !== null) {
-      setPage(1)
-      refetch()
-    }
-  }, [selectedCategoryId, refetch])
 
   useEffect(() => {
     if (products?.products) {
       setAllProducts(products.products)
     }
   }, [products, setAllProducts])
+  useEffect(() => {
+    setPage(1)
+  }, [selectedCategoryId])
   if (isLoading || !products || !products.products) {
     return <div>Загрузка...</div>
   }
+  const filteredProducts = products?.products.filter(
+    (product) => product.categoryId === selectedCategoryId
+  )
 
   const start = (page - 1) * products?.limit
   const end = start + products?.limit
-  const currentProducts = products.products.slice(start, end)
+  const currentProducts = filteredProducts.slice(start, end)
 
   return (
     <Box m={10}>
