@@ -5,6 +5,7 @@ import { useCart } from '../cart/useCart'
 
 const CartPage = () => {
   const { items } = useCart()
+  console.log(items)
   return (
     <Box>
       <Typography>{items.length > 0 ? 'Корзина' : 'Корзина пуста'}</Typography>

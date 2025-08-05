@@ -1,11 +1,11 @@
 export interface Category {
   id: number
   categoryName: string
+  img: string
   products: [
     {
       id: number
       productName: string
-      img: string
     }
   ]
 }

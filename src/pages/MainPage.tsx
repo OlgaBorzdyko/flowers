@@ -133,9 +133,7 @@ const MainPage = () => {
                     <Typography variant="h1">{product.productName}</Typography>
                     <Typography variant="h2">{product.price} ₽</Typography>
                     <AddToCartWithSnackBar
-                      onClick={() =>
-                        addItem({ id: product.id, name: product.productName })
-                      }
+                      onClick={() => addItem({ ...product, quantity: 1 })}
                       productId={product.id}
                     />
                     <Box
