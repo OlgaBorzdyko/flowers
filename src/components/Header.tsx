@@ -8,8 +8,8 @@ const Header = () => {
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      mr={10}
       ml={10}
+      mr={10}
       p={2}
     >
       <Box width="10%" />
