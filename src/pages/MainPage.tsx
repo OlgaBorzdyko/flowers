@@ -35,17 +35,28 @@ const MainPage = () => {
         alignItems="center"
         border="1px solid black"
         container
-        justifyContent="space-between"
+        justifyContent="center"
         spacing={2}
       >
         {categories.map((category: Category) => (
-          <Grid item key={category.id} md={3} xs={12}>
+          <Grid item key={category.id} md={2} xs={6}>
             <Box
               border="1px solid #ccc"
               onClick={() => setSelectedCategoryId(category.id)}
               padding={2}
             >
               {category.categoryName}
+              <Box>
+                <img
+                  alt={category.categoryName}
+                  src={category.img}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover'
+                  }}
+                />
+              </Box>
             </Box>
           </Grid>
         ))}
