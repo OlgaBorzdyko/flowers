@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import QuantityChanging from '../cart/QuantityChanging'
+import QuantityChanging from '../cart/cart-components/QuantityChanging'
 import AddToCartWithSnackBar from '../cart/snackbar/AddToCartWithSnackBar'
 import { useCart } from '../cart/useCart'
 import { useCategories } from '../mocks/hooks/useCategories'

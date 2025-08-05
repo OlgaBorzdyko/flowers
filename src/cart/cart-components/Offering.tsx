@@ -1,6 +1,6 @@
 import { Box, Grid } from '@mui/material'
 
-import { useCart } from './useCart'
+import { useCart } from '../useCart'
 
 const Offering = () => {
   const { allProducts, items } = useCart()

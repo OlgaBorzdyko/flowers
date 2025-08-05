@@ -1,6 +1,6 @@
 import { Box, Button, Typography, useTheme } from '@mui/material'
 
-import { useCart } from './useCart'
+import { useCart } from '../useCart'
 
 const QuantityChanging = ({
   item,

@@ -1,65 +1,34 @@
-import { Box, Card, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 
-import Offering from '../cart/Offering'
-import QuantityChanging from '../cart/QuantityChanging'
+import ItemsInCart from '../cart/cart-components/ItemsInCart'
+import Offering from '../cart/cart-components/Offering'
+import PlacingOrder from '../cart/cart-components/PlacingOrder'
 import { useCart } from '../cart/useCart'
 
 const CartPage = () => {
   const { items } = useCart()
-  console.log(items)
   return (
     <Box>
-      <Typography>{items.length > 0 ? 'Корзина' : 'Корзина пуста'}</Typography>
+      <Typography>
+        {items.length > 0
+          ? 'Корзина'
+          : 'В корзине пусто\n' +
+            '\n' +
+            'Перейдите в каталог, чтобы выбрать товар и оформить заказ'}
+      </Typography>
       <Box
         alignItems="center"
         gap={5}
+        height="100vh"
         px={2}
         sx={{ backgroundColor: 'background.paper' }}
       >
         <Grid container justifyContent="space-between" spacing={5} width="100%">
           <Grid item md={7} xs={12}>
-            <Box display="flex" flexDirection="column">
-              {items.map((item, index) => (
-                <Box key={index}>
-                  <Card
-                    sx={{
-                      backgroundColor: 'background.default',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      flexDirection: 'row',
-                      width: '100%',
-                      gap: 2,
-                      padding: 2
-                    }}
-                  >
-                    <img
-                      alt={item.productName}
-                      src={item.img}
-                      style={{
-                        width: 'auto',
-                        height: 'auto',
-                        objectFit: 'cover',
-                        maxWidth: 200,
-                        maxHeight: 200
-                      }}
-                    />
-                    <Typography>{item.productName}</Typography>
-                    <Box>
-                      <QuantityChanging
-                        item={item}
-                        itemQuantity={item.quantity}
-                      />
-                    </Box>
-                  </Card>
-                </Box>
-              ))}
-            </Box>
+            <ItemsInCart />
           </Grid>
           <Grid item md={5} xs={12}>
-            <Card sx={{ backgroundColor: 'background.default' }}>
-              <Typography>Перейти к оформлению</Typography>
-            </Card>
+            <PlacingOrder />
           </Grid>
         </Grid>
         <Offering />
