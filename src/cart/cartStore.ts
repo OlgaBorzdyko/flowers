@@ -15,11 +15,17 @@ interface CartState {
   addItem: (item: CartItem) => void
   removeItem: (item: CartItem) => void
   decrementItem: (item: CartItem) => void
+  clearCart: (items: CartItem[]) => void
   cookiesLoading: () => void
   setAllProducts: (items: CartItem[]) => void
 }
 
 const CART_COOKIE_KEY = 'cart_items'
+const saveToCookie = (items: CartItem[]) => {
+  Cookies.set(CART_COOKIE_KEY, JSON.stringify(items), {
+    expires: 7
+  })
+}
 
 export const useCartStore = create<CartState>((set) => ({
   items: [],
@@ -32,17 +38,13 @@ export const useCartStore = create<CartState>((set) => ({
         const updatedItems = state.items.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         )
-        Cookies.set(CART_COOKIE_KEY, JSON.stringify(updatedItems), {
-          expires: 7
-        })
+        saveToCookie(updatedItems)
         return {
           items: updatedItems
         }
       }
       const newItems = [...state.items, { ...item, quantity: 1 }]
-      Cookies.set(CART_COOKIE_KEY, JSON.stringify(newItems), {
-        expires: 7
-      })
+      saveToCookie(newItems)
       return {
         items: newItems
       }
@@ -63,10 +65,7 @@ export const useCartStore = create<CartState>((set) => ({
           i.id === item.id ? { ...i, quantity: newQuantity } : i
         )
       }
-      Cookies.set(CART_COOKIE_KEY, JSON.stringify(updatedItems), {
-        expires: 7
-      })
-
+      saveToCookie(updatedItems)
       return {
         items: updatedItems
       }
@@ -75,11 +74,17 @@ export const useCartStore = create<CartState>((set) => ({
   removeItem: (item) => {
     set((state) => {
       const updatedItems = state.items.filter((i) => i.id !== item.id)
-      Cookies.set(CART_COOKIE_KEY, JSON.stringify(updatedItems), {
-        expires: 7
-      })
+      saveToCookie(updatedItems)
       return {
         items: updatedItems
+      }
+    })
+  },
+  clearCart: () => {
+    set(() => {
+      saveToCookie([])
+      return {
+        items: []
       }
     })
   },

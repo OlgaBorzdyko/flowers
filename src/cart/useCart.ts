@@ -5,6 +5,7 @@ export const useCart = () => {
   const items = useCartStore((state) => state.items)
   const decrementItem = useCartStore((state) => state.decrementItem)
   const removeItem = useCartStore((state) => state.removeItem)
+  const clearCart = useCartStore((state) => state.clearCart)
   const cookiesLoading = useCartStore((state) => state.cookiesLoading)
   const setAllProducts = useCartStore((state) => state.setAllProducts)
   const allProducts = useCartStore((state) => state.allProducts)
@@ -15,6 +16,7 @@ export const useCart = () => {
     cookiesLoading,
     setAllProducts,
     allProducts,
-    removeItem
+    removeItem,
+    clearCart
   }
 }

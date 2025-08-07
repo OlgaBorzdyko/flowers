@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 
 import CartItemsList from '../cart/cart-components/CartItemsList'
 import { getNoun } from '../cart/cart-components/getNoun'
@@ -7,7 +7,7 @@ import OrderSummaryCard from '../cart/cart-components/OrderSummaryCard'
 import { useCart } from '../cart/useCart'
 
 const CartPage = () => {
-  const { items } = useCart()
+  const { items, clearCart } = useCart()
   const quantity = items.reduce(
     (accumulator, item) => accumulator + item.quantity,
     0
@@ -21,6 +21,9 @@ const CartPage = () => {
           : 'В корзине пусто\n' +
             '\n' +
             'Перейдите в каталог, чтобы выбрать товар и оформить заказ'}
+      </Typography>
+      <Typography>
+        <Button onClick={() => clearCart(items)}>Очистить корзину</Button>
       </Typography>
       <Box
         alignItems="center"
