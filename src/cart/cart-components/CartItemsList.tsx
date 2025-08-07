@@ -12,7 +12,7 @@ const CartItemsList = () => {
           key={index}
           sx={{
             backgroundColor: 'background.default',
-            padding: 2
+            padding: 5
           }}
         >
           <Stack

@@ -39,6 +39,11 @@ const theme = createTheme({
       fontFamily: `'Montserrat', sans-serif`,
       fontWeight: 400,
       fontSize: '5rem'
+    },
+    h4: {
+      fontSize: '2rem',
+      fontWeight: 500,
+      lineHeight: '24px'
     }
   },
 

@@ -16,18 +16,18 @@ const OrderSummaryCard = () => {
   const word = getNoun(quantity, 'товар', 'товара', 'товаров')
   return (
     <Box>
-      <Card sx={{ backgroundColor: 'background.default' }}>
-        <Stack spacing={2}>
+      <Card sx={{ backgroundColor: 'background.default', p: 5 }}>
+        <Stack spacing={6}>
           <Stack direction="row" justifyContent="space-between">
-            <Typography>Ваш заказ</Typography>
-            <Typography>
+            <Typography variant="h1">Ваш заказ</Typography>
+            <Typography variant="h1">
               {quantity} {word}
             </Typography>
           </Stack>
 
           <Stack direction="row" justifyContent="space-between">
-            <Typography>Товары на сумму</Typography>
-            <Typography>{totalPrice} ₽</Typography>
+            <Typography variant="h1">Товары на сумму</Typography>
+            <Typography variant="h1">{totalPrice} ₽</Typography>
           </Stack>
 
           <Stack
@@ -35,11 +35,13 @@ const OrderSummaryCard = () => {
             fontWeight={600}
             justifyContent="space-between"
           >
-            <Typography>Всего к оплате</Typography>
-            <Typography>{totalPrice} ₽</Typography>
+            <Typography variant="h2">Всего к оплате</Typography>
+            <Typography variant="h2">{totalPrice} ₽</Typography>
           </Stack>
+          <Button color="primary" variant="contained">
+            Перейти к оформлению
+          </Button>
         </Stack>
-        <Button>Перейти к оформлению</Button>
       </Card>
     </Box>
   )

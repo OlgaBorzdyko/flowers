@@ -1,4 +1,5 @@
 import { Box, Button, Grid, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import CartItemsList from '../cart/cart-components/CartItemsList'
 import { getNoun } from '../cart/cart-components/getNoun'
@@ -15,33 +16,57 @@ const CartPage = () => {
   const word = getNoun(quantity, 'товар', 'товара', 'товаров')
   return (
     <Box>
-      <Typography>
-        {items.length > 0
-          ? 'В корзине' + `${quantity} ${word}`
-          : 'В корзине пусто\n' +
-            '\n' +
-            'Перейдите в каталог, чтобы выбрать товар и оформить заказ'}
-      </Typography>
-      <Typography>
-        <Button onClick={() => clearCart(items)}>Очистить корзину</Button>
-      </Typography>
       <Box
         alignItems="center"
         justifyContent="space-between"
         p={10}
-        sx={{ backgroundColor: 'background.paper' }}
+        sx={{ backgroundColor: 'background.paper', width: '100%' }}
       >
-        <Grid container justifyContent="space-between" spacing={5} width="auto">
-          {/* Items in the cart */}
-          <Grid item md={7} xs={12}>
-            <CartItemsList />
+        {items.length > 0 ? (
+          <Grid container justifyContent="space-between" spacing={5}>
+            <Grid item md={12} xs={12}>
+              <Box
+                alignItems="center"
+                display="flex"
+                justifyContent="space-between"
+              >
+                <Typography variant="h4">
+                  {`В корзине ${quantity} ${word}`}
+                </Typography>
+
+                <Button onClick={() => clearCart(items)}>
+                  Очистить корзину
+                </Button>
+              </Box>
+            </Grid>
+            {/* Items in the cart */}
+            <Grid item md={7} xs={12}>
+              <CartItemsList />
+            </Grid>
+            {/* Placing an order */}
+            <Grid item md={5} xs={12}>
+              <OrderSummaryCard />
+            </Grid>
           </Grid>
-          {/* Placing an order */}
-          <Grid item md={5} xs={12}>
-            <OrderSummaryCard />
-          </Grid>
-        </Grid>
-        {/* Offering section */}
+        ) : (
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+          >
+            <Typography>В корзине пусто</Typography>
+            <Typography>
+              Перейдите в каталог, чтобы выбрать товар и оформить заказ
+            </Typography>
+            <Link to="/">
+              <Button>В каталог</Button>
+            </Link>
+          </Box>
+        )}
+      </Box>
+      {/* Offering section */}
+      <Box>
         <Offering />
       </Box>
     </Box>
