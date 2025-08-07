@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from '@mui/material'
 
-import { getNoun } from '../cart/cart-components/getNoun'
 import CartItemsList from '../cart/cart-components/CartItemsList'
+import { getNoun } from '../cart/cart-components/getNoun'
 import Offering from '../cart/cart-components/Offering'
 import OrderSummaryCard from '../cart/cart-components/OrderSummaryCard'
 import { useCart } from '../cart/useCart'
@@ -29,13 +29,16 @@ const CartPage = () => {
         sx={{ backgroundColor: 'background.paper' }}
       >
         <Grid container justifyContent="space-between" spacing={5} width="100%">
+          {/* Items in the cart */}
           <Grid item md={7} xs={12}>
             <CartItemsList />
           </Grid>
+          {/* Placing an order */}
           <Grid item md={5} xs={12}>
             <OrderSummaryCard />
           </Grid>
         </Grid>
+        {/* Offering section */}
         <Offering />
       </Box>
     </Box>
