@@ -13,6 +13,7 @@ interface CartState {
   items: CartItem[]
   allProducts: CartItem[]
   addItem: (item: CartItem) => void
+  removeItem: (item: CartItem) => void
   decrementItem: (item: CartItem) => void
   cookiesLoading: () => void
   setAllProducts: (items: CartItem[]) => void
@@ -66,6 +67,17 @@ export const useCartStore = create<CartState>((set) => ({
         expires: 7
       })
 
+      return {
+        items: updatedItems
+      }
+    })
+  },
+  removeItem: (item) => {
+    set((state) => {
+      const updatedItems = state.items.filter((i) => i.id !== item.id)
+      Cookies.set(CART_COOKIE_KEY, JSON.stringify(updatedItems), {
+        expires: 7
+      })
       return {
         items: updatedItems
       }

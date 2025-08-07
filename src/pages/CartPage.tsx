@@ -24,11 +24,11 @@ const CartPage = () => {
       </Typography>
       <Box
         alignItems="center"
-        gap={5}
-        px={2}
+        justifyContent="space-between"
+        p={10}
         sx={{ backgroundColor: 'background.paper' }}
       >
-        <Grid container justifyContent="space-between" spacing={5} width="100%">
+        <Grid container justifyContent="space-between" spacing={5} width="auto">
           {/* Items in the cart */}
           <Grid item md={7} xs={12}>
             <CartItemsList />

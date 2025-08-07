@@ -1,10 +1,10 @@
-import { Box, Card, Stack, Typography } from '@mui/material'
+import { Box, Button, Card, Stack, Typography } from '@mui/material'
 
 import { useCart } from '../useCart'
 import QuantityChanging from './QuantityChanging'
 
 const CartItemsList = () => {
-  const { items } = useCart()
+  const { items, removeItem } = useCart()
   return (
     <>
       {items.map((item, index) => (
@@ -35,6 +35,13 @@ const CartItemsList = () => {
             <Typography>{item.productName}</Typography>
             <Box>
               <QuantityChanging item={item} itemQuantity={item.quantity} />
+              <Button
+                onClick={() => {
+                  removeItem(item)
+                }}
+              >
+                X
+              </Button>
             </Box>
           </Stack>
         </Card>
