@@ -3,7 +3,7 @@ import { Box, Card, Stack, Typography } from '@mui/material'
 import { useCart } from '../useCart'
 import QuantityChanging from './QuantityChanging'
 
-const ItemsInCart = () => {
+const CartItemsList = () => {
   const { items } = useCart()
   return (
     <>
@@ -43,4 +43,4 @@ const ItemsInCart = () => {
   )
 }
 
-export default ItemsInCart
+export default CartItemsList

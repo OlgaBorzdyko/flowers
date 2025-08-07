@@ -3,7 +3,7 @@ import { Box, Button, Card, Stack, Typography } from '@mui/material'
 import { useCart } from '../useCart'
 import { getNoun } from './getNoun'
 
-const PlacingOrder = () => {
+const OrderSummaryCard = () => {
   const { items } = useCart()
   const quantity = items.reduce(
     (accumulator, item) => accumulator + item.quantity,
@@ -45,4 +45,4 @@ const PlacingOrder = () => {
   )
 }
 
-export default PlacingOrder
+export default OrderSummaryCard
