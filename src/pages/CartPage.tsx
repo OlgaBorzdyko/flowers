@@ -25,7 +25,6 @@ const CartPage = () => {
       <Box
         alignItems="center"
         gap={5}
-        height="100vh"
         px={2}
         sx={{ backgroundColor: 'background.paper' }}
       >

@@ -1,4 +1,4 @@
-import { Container, CssBaseline, ThemeProvider } from '@mui/material'
+import { Box, CssBaseline, ThemeProvider } from '@mui/material'
 import { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -18,11 +18,17 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <Container>
+        <Box display="flex" flexDirection="column" minHeight="100vh">
           <Header />
-          <AppRoutes />
-          <Footer />
-        </Container>
+
+          <Box component="main" flexGrow={1}>
+            <AppRoutes />
+          </Box>
+
+          <Box component="footer">
+            <Footer />
+          </Box>
+        </Box>
       </BrowserRouter>
     </ThemeProvider>
   )
