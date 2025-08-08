@@ -39,6 +39,7 @@ const MainPage = () => {
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
+        padding={10}
       >
         <SearchField />
         <IconButton aria-label="Cart" component={Link} to="/cart">
