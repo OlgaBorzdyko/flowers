@@ -113,7 +113,7 @@ export const useCartStore = create<CartState>((set) => ({
       }
     }
   },
-  loadAllProducts: () => {
+  loadAllProductsFromCache: () => {
     const cache = Cookies.get(ALL_PRODUCTS_COOKIE_KEY)
     if (cache) {
       try {
