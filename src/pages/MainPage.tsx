@@ -1,5 +1,6 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, IconButton, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 
 import QuantityChanging from '../cart/cart-components/QuantityChanging'
 import AddToCartWithSnackBar from '../cart/snackbar/AddToCartWithSnackBar'
@@ -7,6 +8,7 @@ import { useCart } from '../cart/useCart'
 import { useCategories } from '../mocks/hooks/useCategories'
 import { useProducts } from '../mocks/hooks/useProducts'
 import { Category, Product } from '../types/ApiDataTypes'
+import {Link} from "react-router-dom";
 
 const MainPage = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1)
@@ -31,6 +33,9 @@ const MainPage = () => {
 
   return (
     <Box m={10}>
+      <IconButton aria-label="Cart" component={Link} to="/cart">
+        <ShoppingCartIcon />
+      </IconButton>
       <Grid
         alignItems="center"
         border="1px solid black"
