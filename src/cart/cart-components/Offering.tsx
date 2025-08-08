@@ -4,7 +4,6 @@ import { useCart } from '../useCart'
 
 const Offering = () => {
   const { allProducts, items } = useCart()
-  console.log(allProducts)
   const offeringProducts = allProducts.filter(
     (product) => !items.find((item) => item.id === product.id)
   )

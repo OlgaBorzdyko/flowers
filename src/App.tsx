@@ -1,19 +1,14 @@
 import { Box, CssBaseline, ThemeProvider } from '@mui/material'
-import { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
-import { useCart } from './cart/useCart'
+import { useProductsLoader } from './cart/cart-components/useProductsLoader'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import AppRoutes from './routes'
 import theme from './theme'
 
 const App = () => {
-  const { cookiesLoading } = useCart()
-
-  useEffect(() => {
-    cookiesLoading()
-  }, [cookiesLoading])
+  useProductsLoader()
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
