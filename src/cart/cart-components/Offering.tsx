@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 
 import { useCart } from '../useCart'
 
@@ -7,61 +7,66 @@ const Offering = () => {
   const offeringProducts = allProducts.filter(
     (product) => !items.find((item) => item.id === product.id)
   )
+  const shuffled = offeringProducts.sort(() => Math.random() - 0.5)
+  const offered = shuffled.slice(0, 4)
   return (
-    <Grid container justifyContent="space-between" spacing={5} width="100%">
-      {offeringProducts.map((product) => (
-        <Grid item key={product.id} md={3} xs={6}>
-          <Box
-            alignItems="center"
-            border="1px solid #ccc"
-            display="flex"
-            flexDirection="column"
-            gap={2}
-            height="auto"
-            padding={2}
-          >
+    <Box m={5}>
+      <Typography variant="h5">Вам подойдет</Typography>
+      <Grid container justifyContent="space-between" spacing={5} width="100%">
+        {offered.map((product) => (
+          <Grid item key={product.id} md={3} xs={6}>
             <Box
-              sx={{
-                position: 'relative',
-                width: '100%',
-                overflow: 'hidden',
-                '&:hover img': {
-                  filter: 'blur(5px)'
-                },
-                '&:hover .overlayButton': {
-                  opacity: 1
-                }
-              }}
+              alignItems="center"
+              border="1px solid #ccc"
+              display="flex"
+              flexDirection="column"
+              gap={2}
+              height="auto"
+              padding={2}
             >
               <Box
-                alt={product.productName}
-                component="img"
-                src={product.img}
                 sx={{
+                  position: 'relative',
                   width: '100%',
-                  height: 'auto',
-                  objectFit: 'cover',
-                  transition: 'filter 0.5s ease-in-out'
+                  overflow: 'hidden',
+                  '&:hover img': {
+                    filter: 'blur(5px)'
+                  },
+                  '&:hover .overlayButton': {
+                    opacity: 1
+                  }
                 }}
-              />
-              <Box
-                className="overlayButton"
-                sx={{
-                  width: '50%',
-                  height: '100%',
-                  position: 'absolute',
-                  top: '80%',
-                  left: '25%',
-                  zIndex: 2,
-                  opacity: 0,
-                  transition: 'opacity 0.3s ease-in-out'
-                }}
-              ></Box>
+              >
+                <Box
+                  alt={product.productName}
+                  component="img"
+                  src={product.img}
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
+                    transition: 'filter 0.5s ease-in-out'
+                  }}
+                />
+                <Box
+                  className="overlayButton"
+                  sx={{
+                    width: '50%',
+                    height: '100%',
+                    position: 'absolute',
+                    top: '80%',
+                    left: '25%',
+                    zIndex: 2,
+                    opacity: 0,
+                    transition: 'opacity 0.3s ease-in-out'
+                  }}
+                ></Box>
+              </Box>
             </Box>
-          </Box>
-        </Grid>
-      ))}
-    </Grid>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   )
 }
 

@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, Grid, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 import CartItemsList from '../cart/cart-components/CartItemsList'
@@ -33,16 +33,17 @@ const CartPage = () => {
                 <Typography variant="h4">
                   {`В корзине ${quantity} ${word}`}
                 </Typography>
-
                 <Button onClick={() => clearCart(items)}>
                   Очистить корзину
                 </Button>
               </Box>
             </Grid>
+
             {/* Items in the cart */}
             <Grid item md={7} xs={12}>
               <CartItemsList />
             </Grid>
+
             {/* Placing an order */}
             <Grid item md={5} xs={12}>
               <OrderSummaryCard />
@@ -54,20 +55,23 @@ const CartPage = () => {
             display="flex"
             flexDirection="column"
             justifyContent="center"
+            minHeight="300px"
+            sx={{ gap: 4, mb: 5 }}
           >
-            <Typography>В корзине пусто</Typography>
-            <Typography>
+            <Typography variant="h1">В корзине пусто</Typography>
+            <Typography variant="h1">
               Перейдите в каталог, чтобы выбрать товар и оформить заказ
             </Typography>
             <Link to="/">
-              <Button>В каталог</Button>
+              <Button variant="contained">В каталог</Button>
             </Link>
           </Box>
         )}
-      </Box>
-      {/* Offering section */}
-      <Box>
-        <Offering />
+        <Box mt={5}>
+          <Card sx={{ backgroundColor: 'background.default', p: 5 }}>
+            <Offering />
+          </Card>
+        </Box>
       </Box>
     </Box>
   )
