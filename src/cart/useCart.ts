@@ -9,11 +9,15 @@ export const useCart = () => {
   const cookiesLoading = useCartStore((state) => state.cookiesLoading)
   const setAllProducts = useCartStore((state) => state.setAllProducts)
   const allProducts = useCartStore((state) => state.allProducts)
+  const loadAllProductsFromCache = useCartStore(
+    (state) => state.loadAllProductsFromCache
+  )
   return {
     addItem,
     items,
     decrementItem,
     cookiesLoading,
+    loadAllProductsFromCache,
     setAllProducts,
     allProducts,
     removeItem,

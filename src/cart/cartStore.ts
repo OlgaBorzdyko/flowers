@@ -17,6 +17,7 @@ interface CartState {
   decrementItem: (item: CartItem) => void
   clearCart: (items: CartItem[]) => void
   cookiesLoading: () => void
+  loadAllProductsFromCache: () => void
   setAllProducts: (items: CartItem[]) => void
 }
 
