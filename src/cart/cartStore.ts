@@ -21,16 +21,28 @@ interface CartState {
 }
 
 const CART_COOKIE_KEY = 'cart_items'
+const ALL_PRODUCTS_COOKIE_KEY = 'all_products_cache'
+const CACHE_TIME = 5 * 60 * 1000 // 5m
 const saveToCookie = (items: CartItem[]) => {
   Cookies.set(CART_COOKIE_KEY, JSON.stringify(items), {
     expires: 7
   })
 }
+const saveAllProductsToCookie = (items: CartItem[]) => {
+  Cookies.set(
+    ALL_PRODUCTS_COOKIE_KEY,
+    JSON.stringify({ items, timestamp: Date.now() }),
+    { expires: 7 }
+  )
+}
 
 export const useCartStore = create<CartState>((set) => ({
   items: [],
   allProducts: [],
-  setAllProducts: (items) => set({ allProducts: items }),
+  setAllProducts: (items) => {
+    set({ allProducts: items })
+    saveAllProductsToCookie(items)
+  },
   addItem: (item) => {
     set((state) => {
       const addedItem = state.items.find((i) => i.id === item.id)
@@ -95,6 +107,22 @@ export const useCartStore = create<CartState>((set) => ({
         const parsed = JSON.parse(cookiesData)
         if (Array.isArray(parsed)) {
           set({ items: parsed })
+        }
+      } catch (e) {
+        console.error('Failed to parse', e)
+      }
+    }
+  },
+  loadAllProducts: () => {
+    const cache = Cookies.get(ALL_PRODUCTS_COOKIE_KEY)
+    if (cache) {
+      try {
+        const parsed = JSON.parse(cache)
+        if (
+          Array.isArray(parsed.items) &&
+          Date.now() - parsed.timestamp < CACHE_TIME
+        ) {
+          set({ allProducts: parsed.items })
         }
       } catch (e) {
         console.error('Failed to parse', e)
