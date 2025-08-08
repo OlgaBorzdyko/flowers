@@ -16,7 +16,7 @@ const AddToCartWithSnackBar = ({
 }) => {
   const [open, setOpen] = useState(false)
   const { items } = useCart()
-  const name = items.find((item) => item.id === productId)?.productName
+  const item = items.find((item) => item.id === productId)
 
   const handleClick = () => {
     setOpen(true)
@@ -35,16 +35,55 @@ const AddToCartWithSnackBar = ({
   }
 
   return (
-    <Box width="100%">
+    <Box color="white" height="auto" width="auto">
       <AddToCartButton onClick={handleClick} />
-      <Snackbar autoHideDuration={5000} onClose={handleClose} open={open}>
-        <Box>
-          <Typography>Товар добавлен в корзину</Typography>
-          <Typography>{name}</Typography>
-          <Button component={Link} to="/cart">
-            Перейти в корзину
-          </Button>
-        </Box>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        open={open}
+      >
+        {item && (
+          <Box
+            alignItems="center"
+            bgcolor="primary.main"
+            borderRadius="15px"
+            display="flex"
+            flexDirection="column"
+            gap={5}
+            minWidth="400px"
+            p={5}
+          >
+            <Typography variant="h2">Добавлено в корзину</Typography>
+            <Box
+              display="flex"
+              flexDirection="row"
+              gap={5}
+              justifyContent="space-between"
+              width="100%"
+            >
+              <Box display="flex" flexDirection="column" gap={2}>
+                <Typography variant="h1">{item.productName}</Typography>
+                <Typography>{item.price}</Typography>
+              </Box>
+              <img
+                alt={item.productName}
+                src={item.img}
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'cover',
+                  maxWidth: 100,
+                  maxHeight: 100,
+                  borderRadius: 5
+                }}
+              />
+            </Box>
+            <Button color="inherit" component={Link} to="/cart">
+              Перейти в корзину
+            </Button>
+          </Box>
+        )}
       </Snackbar>
     </Box>
   )
