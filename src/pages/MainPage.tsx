@@ -38,8 +38,10 @@ const MainPage = () => {
         alignItems="center"
         display="flex"
         flexDirection="row"
+        gap={10}
         justifyContent="space-between"
         padding={10}
+        width="100%"
       >
         <SearchField />
         <IconButton aria-label="Cart" component={Link} to="/cart">

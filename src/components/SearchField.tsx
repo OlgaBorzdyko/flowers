@@ -10,22 +10,24 @@ const SearchField = () => {
     setInputValue(e.target.value)
   }
   const filtered =
-    inputValue.length >= 1
+    inputValue.length >= 3
       ? allProducts.filter((product) =>
           product.productName.toLowerCase().includes(inputValue.toLowerCase())
         )
       : []
   return (
-    <Box>
-      <TextField onChange={onHandleChange} />
+    <Box sx={{ flex: 1 }}>
+      <TextField fullWidth label="Поиск" onChange={onHandleChange} />
 
-      {inputValue.length >= 1 && filtered.length === 0 && (
+      {inputValue.length >= 3 && filtered.length === 0 && (
         <Typography>Совпадения не найдены</Typography>
       )}
 
-      {filtered.map((product) => (
-        <List key={product.id}>{product.productName}</List>
-      ))}
+      <Box sx={{ maxHeight: 300, overflowY: 'auto' }}>
+        {filtered.map((product) => (
+          <List key={product.id}>{product.productName}</List>
+        ))}
+      </Box>
     </Box>
   )
 }
